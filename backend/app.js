@@ -18,8 +18,9 @@ connectDB();
 
 app.use(
   cors({
-    origin: ["https://shop-sleuth-frontend.vercel.app/"],
-    methods: ["POST", "GET"],
+    origin: ["https://shop-sleuth-frontend.vercel.app"],
+    methods: '*',
+    allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,
   })
 );
