@@ -19,6 +19,7 @@ const Main = () => {
   const [loading, setLoading] = useState(false);
 
   let { data, setData } = useContext(UserContext);
+  axios.defaults.withCredentials = true;
 
   const navigator = useNavigate();
 
@@ -31,8 +32,7 @@ const Main = () => {
         alert("Enter a link");
         return;
       }
-
-      let data = await axios.post("/productLink", { productLink: link });
+      let data = await axios.post("https://shopsleuth-backend.vercel.app/productLink", { productLink: link });
       if (data.status === 200) {
         console.log(data.data);
         setData(data.data);

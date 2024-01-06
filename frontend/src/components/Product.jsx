@@ -29,6 +29,7 @@ const Product = () => {
 
   const [mail, setMail] = useState("");
   const [loading, setLoading] = useState(false);
+  axios.defaults.withCredentials = true;
 
   const addProduct = async () => {
     setLoading(true);
@@ -49,7 +50,10 @@ const Product = () => {
       return;
     }
     try {
-      let response = await axios.post("/addProduct", { mail, data });
+      let response = await axios.post(
+        "https://shopsleuth-backend.vercel.app/addProduct",
+        { mail, data }
+      );
       if (response.status === 200) {
         toast({
           title: "Tracking started",
@@ -68,14 +72,14 @@ const Product = () => {
   return (
     <Box w={"100vw"} h={"100vh"} overflowX={"hidden"} fontFamily={"Montserrat"}>
       <Navbar />
-      <Box w={"100%"} mt={"2rem"} pb={"2rem"} h={'100%'}>
+      <Box w={"100%"} mt={"2rem"} pb={"2rem"} h={"100%"}>
         <HStack
           w={"100%"}
           pl={"2rem"}
           pr={"2rem"}
           alignItems={"flex-start"}
           border={"1px solid #e7e7e7"}
-          h={'100%'}
+          h={"100%"}
         >
           {/* left side */}
           <VStack w={"35%"}>
@@ -93,7 +97,12 @@ const Product = () => {
             ></Box>
           </VStack>
           {/* right side */}
-          <VStack w={"65%"} h={"100%"} pl={"3rem"} borderLeft={"1px solid #e7e7e7"}>
+          <VStack
+            w={"65%"}
+            h={"100%"}
+            pl={"3rem"}
+            borderLeft={"1px solid #e7e7e7"}
+          >
             <Box w={"100%"}>
               {/* Product Title */}
               <Box mt={"1rem"}>
