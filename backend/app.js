@@ -25,6 +25,10 @@ app.use(
   })
 );
 
+app.get("/", (req,res)=>{
+  res.json({"message" : "Hello"});
+})
+
 const flipkartFetch = async (link) => {
   try {
     if (link.includes("flipkart")) {
