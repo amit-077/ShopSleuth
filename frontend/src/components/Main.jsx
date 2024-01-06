@@ -32,7 +32,7 @@ const Main = () => {
         alert("Enter a link");
         return;
       }
-      let data = await axios.post("https://shopsleuth-backend.vercel.app/productLink", { productLink: link });
+      let data = await axios.post("https://shop-sleuth-backend.vercel.app/productLink", { productLink: link });
       if (data.status === 200) {
         console.log(data.data);
         setData(data.data);
