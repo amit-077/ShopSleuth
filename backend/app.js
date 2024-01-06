@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const puppeteer = require("puppeteer");
+const cors = require("cors");
 const { trackModel } = require("./models/trackProduct");
 const dotenv = require("dotenv");
 var cron = require("node-cron");
@@ -15,20 +16,13 @@ app.use(express.json());
 // Database connection
 connectDB();
 
-// Deployment
-const __dirname1 = path.resolve();
-if (true) {
-  app.use(express.static(path.join(__dirname1, "/frontend/build")));
-
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname1, "frontend", "build", "index.html"));
-  });
-} else {
-  app.get("/", (req, res) => {
-    res.send("API Running successfully");
-  });
-}
-// Deployment
+app.use(
+  cors({
+    origin: [""],
+    methods: ["POST", "GET"],
+    credentials: true,
+  })
+);
 
 const flipkartFetch = async (link) => {
   try {
