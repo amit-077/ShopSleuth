@@ -51,7 +51,7 @@ const Product = () => {
     }
     try {
       let response = await axios.post(
-        "https://shopsleuth-backend.vercel.app/addProduct",
+        "https://shop-sleuth-backend.vercel.app/addProduct",
         { mail, data }
       );
       if (response.status === 200) {
