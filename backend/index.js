@@ -9,7 +9,6 @@ const nodemailer = require("nodemailer");
 const { connectDB } = require("./connectDB");
 const { default: mongoose } = require("mongoose");
 const { sendVerificationMail } = require("./mail-sender/sendMail");
-const path = require("path");
 dotenv.config();
 app.use(express.json());
 
@@ -19,15 +18,14 @@ connectDB();
 app.use(
   cors({
     origin: ["https://shop-sleuth-frontend.vercel.app"],
-    methods: '*',
-    allowedHeaders: ['Content-Type', 'Authorization'],
+    methods: "*",
     credentials: true,
   })
 );
 
-app.get("/", (req,res)=>{
-  res.json({"message" : "Hello"});
-})
+app.get("/", (req, res) => {
+  res.json("Hello");
+});
 
 const flipkartFetch = async (link) => {
   try {
