@@ -9,6 +9,10 @@ const Navbar = () => {
     let data = await axios.get("shop-sleuth-backend.vercel.app/");
     console.log(data);
   }
+
+  const logVal = ()=>{
+    console.log("Contact Us");
+  }
   
   return (
     <Box w={"100vw"} pl={"10rem"} pr={"10rem"} pt={"0.7rem"} pb={"0.7rem"}>
@@ -34,7 +38,7 @@ const Navbar = () => {
               About us
             </Text>
           </Box>
-          <Box onClick=()=>{console.log("Contact Us")}>
+          <Box onClick = {logVal}>
             <Text cursor={"pointer"} _hover={{ color: "#ff6347" }}>
               Contact us
             </Text>
